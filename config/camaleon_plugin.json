@@ -13,7 +13,6 @@
       "camaleon_spree_on_inactive"
     ],
     "available_user_roles_list": ["camaleon_spree_user_roles_hook"],
-    "extra_custom_fields": ["camaleon_spree_custom_fields"],
     "custom_field_custom_models": ["camaleon_spree_custom_field_models"],
     "on_render_front_menu_item": ["camaleon_spree_on_render_front_menu_item"],
     "nav_menu_custom": ["camaleon_spree_cama_nav_menus"],
