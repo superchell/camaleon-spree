@@ -25,7 +25,7 @@ Rails.application.config.to_prepare do
       <script>
       jQuery(function(){
           // spree commerce menus
-          $('#sidebar-menu .sidebar-menu').append('<li data-key=\"spree\"> <a href=\"/admin/\"><i class=\"fa fa-shopping-cart\"></i> <span class="">#{t('plugins.spree_cama.admin.menus.ecommerce', default: 'Spree Ecommerce')}</span></a> </li>');
+          $('#sidebar-menu .sidebar-menu').append('<li data-key=\"spree\"> <a href=\"/admin/\"><i class=\"fa fa-shopping-cart\"></i> <span class="">Управление магазином</span></a> </li>');
 
       }); </script>")
     end
