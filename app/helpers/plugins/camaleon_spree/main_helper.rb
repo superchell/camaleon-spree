@@ -30,16 +30,10 @@ module Plugins::CamaleonSpree::MainHelper
   def camaleon_spree_cama_nav_menus(args)
     # Groups
     Spree::Taxonomy.all.each do |taxonomy|
-      args[:custom_menus]["spree_menus"] = {link: "", title: "Spree #{taxonomy.name.pluralize}"}
+      args[:custom_menus]["spree_menus"] = {link: "", title: "Категории(таксоны) интернет магазина"}
       taxonomy.taxons.each do |taxon|
         args[:custom_menus]["spree_tax_#{taxon.id}"] = {link: spree.nested_taxons_path(taxon.permalink), title: taxon.name, kind: 'Spree::Taxon', id: taxon.id}
       end
-    end
-
-    # Products
-    args[:custom_menus]["spree_menus_products"] = {link: "", title: "Spree Products"}
-    Spree::Product.reorder(name: :ASC).all.each do |product|
-      args[:custom_menus]["spree_product_#{product.id}"] = {link: spree.product_path(product), title: product.name, kind: 'Spree::Product', id: product.id}
     end
   end
 
@@ -48,13 +42,6 @@ module Plugins::CamaleonSpree::MainHelper
     if args[:menu_item].kind == 'Spree::Taxon'
       taxon = Spree::Taxon.find(args[:menu_item].url)
       res = {name: taxon.name, link: spree.nested_taxons_path(taxon.permalink)}
-      res[:current] = site_current_path == res[:link] unless args[:is_from_backend]
-      args[:parsed_menu] = res
-    end
-
-    if args[:menu_item].kind == 'Spree::Product'
-      product = Spree::Product.find(args[:menu_item].url)
-      res = {name: product.name, link: spree.product_path(product)}
       res[:current] = site_current_path == res[:link] unless args[:is_from_backend]
       args[:parsed_menu] = res
     end
