@@ -8,15 +8,4 @@ Rails.application.config.to_prepare do
       cookies[:return_to] = nil
     end
   end
-
-  Deface::Override.new(
-      virtual_path: 'spree/layouts/admin',
-      name: 'cama_admin_iframe_hide_sidebar',
-      insert_bottom: '[data-hook="admin_footer_scripts"]',
-      text: '<script>
-               jQuery(function(){
-                  if(window.location != window.parent.location){ $("#wrapper").addClass("sidebar-minimized"); $("#main-part").css({"margin-left": 0, "padding-left": "35px"}); $("#main-sidebar").hide(); }
-               })
-            </script>'
-  )
 end
